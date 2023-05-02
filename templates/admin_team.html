@@ -1,0 +1,330 @@
+$def with (todos1)
+<html>
+<head>
+	<title>admin_team</title>
+	<style>
+		body {
+			background-color: #f2f2f2;
+			font-family: Arial, sans-serif;
+			color: #333;
+			margin: 0;
+			padding: 0;
+		}
+
+		h1 {
+			text-align: center;
+			/*margin-bottom: 30px;*/
+		}
+
+		form {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			margin-bottom: 20px;
+			background-color: #f2f2f2;
+			padding: 20px;
+			box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+		}
+		#form_down_list {
+			background-color: #f2f2f2; /*设置表单底色为深色*/
+			color: #000; /*设置字体颜色为白色*/
+			padding: 20px; /*设置表单的内边距*/
+		}
+
+		#div1 {
+
+			padding: 10px; /*设置内边距*/
+			color: #000; /*设置字体颜色为白色*/
+			margin-bottom: 10px; /*设置底部外边距*/
+		}
+
+		#div1 label {
+			display: inline-block; /*设置标签为行内块元素*/
+			/*width: 100px; !*设置标签宽度*!*/
+			margin-right: 10px; /*设置标签与输入框的距离*/
+		}
+
+		#div1 input {
+			padding: 5px; /*设置输入框的内边距*/
+			border-radius: 3px; /*设置输入框的圆角*/
+			border: none; /*去除输入框的边框*/
+			background-color: #fff; /*设置输入框的底色为白色*/
+			color: #333; /*设置输入框文字颜色为黑色*/
+		}
+
+		#mybutton {
+			background-color: #4CAF50; /*设置提交按钮背景色*/
+			color: #fff; /*设置提交按钮文字颜色*/
+			border: none; /*去除提交按钮边框*/
+			padding: 10px 20px; /*设置提交按钮内边距*/
+			border-radius: 3px; /*设置提交按钮圆角*/
+		}
+
+		label {
+			display: block;
+			margin-bottom: 10px;
+			font-weight: bold;
+		}
+
+		select {
+			flex: 1;
+			height: 40px;
+			margin-right: 20px;
+			padding: 5px;
+			border-radius: 4px;
+			border: none;
+			background-color: #fff;
+			box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+		}
+
+		input[type="text"] {
+			flex: 1;
+			height: 40px;
+			padding: 5px;
+			border-radius: 4px;
+			border: none;
+			background-color: #fff;
+			box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+		}
+
+		button {
+			height: 40px;
+			padding: 5px 20px;
+			background-color: #4CAF50;
+			color: #fff;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+		}
+
+		button:hover {
+			background-color: #3e8e41;
+		}
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			margin-bottom: 20px;
+			box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+			background-color: #fff;
+		}
+
+		th, td {
+			padding: 10px;
+			text-align: left;
+			border-bottom: 1px solid #ddd;
+		}
+
+		th {
+			background-color: #f2f2f2;
+		}
+
+		#div1, #div2 {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			margin-bottom: 20px;
+			background-color: #f2f2f2;
+			padding: 20px;
+			/*box-shadow: 0 2px 6px rgba(0,0,0,0.1);*/
+		}
+
+		#div1 label, #div2 label {
+			flex: 1;
+			margin-right: 20px;
+		}
+	</style>
+
+	<script>
+		const submitBtn = document.getElementById("mybutton");
+		const resultTable1 = document.getElementById("result_table1");
+		const table1 = document.getElementById("table1");
+
+		submitBtn.addEventListener("click", function() {
+			resultTable1.style.display = "block";
+			table1.style.display = "none";
+		  }
+		);
+
+		function toggleForm(button) {
+              var mm = button.parentNode.nextElementSibling.firstElementChild;
+              console.log("mm",mm)
+
+              console.log("mm.style.display",mm.style.display)
+              if (mm.style.display === "none") {
+                // form.style.display = "table-row";
+                mm.style.display = "block";
+              } else {
+                mm.style.display = "none";
+              }
+            }
+		function showForm() {
+        document.getElementById("formContainer").style.display = "block";
+      }
+	</script>
+</head>
+<body>
+	<form id="form_down_list"  method="POST" action="/admin_team">
+		<h1>Please input the special attribute value to search team</h1>
+		<div id="div1" >
+			<label for="input1.1">teamName:</label>
+			<input  name="team_name" type="text" id="input1.1" style="margin-right: 30px">
+			<label for="input1.2">city:</label>
+			<input  name="city" type="text" id="input1.2" style="margin-right: 30px">
+			<label for="input1.3">area:</label>
+			<input  name="area" type="text" id="input1.3" style="margin-right: 30px">
+		</div>
+
+		<button id="mybutton" type="submit" class="btn btn-primary" style="margin-bottom: 20px"> submit</button>
+	</form>
+
+    <button id="insert_team" onclick="showForm()" class="btn btn-primary" style="margin-bottom: 20px">insert</button>
+
+	<div id="formContainer" style="display:none;">
+		  <form action="/insert_team" method="post">
+            <label for="insert_team_name">team_name:</label>
+			<input type="text" id="insert_team_name" name="insert_team_name" style="margin-right: 20px;margin-bottom: 20px"><br><br>
+			<label for="insert_city">city:</label>
+			<input type="text" id="insert_city" name="insert_city" style="margin-right: 20px;margin-bottom: 20px"><br><br>
+			<label for="insert_state">state:</label>
+			<input type="text" id="insert_state" name="insert_state" style="margin-right: 20px;margin-bottom: 20px"><br><br>
+            <label for="insert_area">area:</label>
+			<input type="text" id="insert_area" name="insert_area" style="margin-right: 20px;margin-bottom: 20px"><br><br>
+			<label for="insert_win_rate">win rate:</label>
+			<input type="text" id="insert_win_rate" name="insert_win_rate" style="margin-right: 20px;margin-bottom: 20px"><br><br>
+			<label for="insert_score">score:</label>
+			<input type="text" id="insert_score" name="insert_score" style="margin-right: 20px;margin-bottom: 20px"><br><br>
+			<label for="insert_oPPG">oPPG:</label>
+			<input type="text" id="insert_oPPG" name="insert_oPPG" style="margin-right: 20px;margin-bottom: 20px"><br><br>
+			<label for="insert_pDIFF">pDIFF:</label>
+			<input type="text" id="insert_pDIFF" name="insert_pDIFF" style="margin-right: 20px;margin-bottom: 20px"><br><br>
+            <label for="insert_PACE">PACE:</label>
+			<input type="text" id="insert_PACE" name="insert_PACE" style="margin-right: 20px;margin-bottom: 20px"><br><br>
+            <label for="insert_oEFF">oEFF:</label>
+			<input type="text" id="insert_oEFF" name="insert_oEFF" style="margin-right: 20px;margin-bottom: 20px"><br><br>
+            <label for="insert_dEFF">dEFF:</label>
+			<input type="text" id="insert_dEFF" name="insert_dEFF" style="margin-right: 20px;margin-bottom: 20px"><br><br>
+			<label for="insert_eDIFF">eDIFF:</label>
+			<input type="text" id="insert_eDIFF" name="insert_eDIFF" style="margin-right: 20px;margin-bottom: 20px"><br><br>
+            <label for="insert_SOS">SOS:</label>
+			<input type="text" id="insert_SOS" name="insert_SOS" style="margin-right: 20px;margin-bottom: 20px"><br><br>
+            <label for="insert_rSOS">rSOS:</label>
+			<input type="text" id="insert_rSOS" name="insert_rSOS" style="margin-right: 20px;margin-bottom: 20px"><br><br>
+
+			<button id="insert" class="btn btn-primary">insert_submit</button>
+		  </form>
+	</div>
+
+	<table id="table1">
+		<tr class=" label-primary">
+			 						<th scope="col"><span style="color:black">teamname</span></th>
+									<th scope="col"><span style="color:black">city</span></th>
+									<th scope="col"><span style="color:black">area</span></th>
+									<th scope="col"><span style="color:black">win rate</span></th>
+									<th scope="col"><span style="color:black">score</span></th>
+									<th scope="col"><span style="color:black">oPPG</span></th>
+									<th scope="col"><span style="color:black">pDIFF</span></th>
+									<th scope="col"><span style="color:black">PACE</span></th>
+									<th scope="col"><span style="color:black">oEFF</span></th>
+									<th scope="col"><span style="color:black">dEFF</span></th>
+									<th scope="col"><span style="color:black">eDIFF</span></th>
+									<th scope="col"><span style="color:black">SOS</span></th>
+									<th scope="col"><span style="color:black">rSOS</span></th>
+									<th scope="col"><span style="color:black">operation</span></th>
+                                    <th scope="col"><span style="color:black">update</span></th>
+                                    <th scope="col"><span style="color:black">update_details</span></th>
+								</tr>
+
+								$for todo in todos1:
+									<tr class="active">
+										<td>$todo.teamname</td>
+										<td>$todo.city</td>
+										<td>$todo.comp_area</td>
+										<td>$todo.WINrate</td>
+										<td>$todo.score</td>
+										<td>$todo.oPPG</td>
+										<td>$todo.pDIFF</td>
+										<td>$todo.PACE</td>
+										<td>$todo.oEFF</td>
+										<td>$todo.dEFF</td>
+										<td>$todo.eDIFF</td>
+										<td>$todo.SOS</td>
+										<td>$todo.rSOS</td>
+										<td> <a href="/delete_team?id=$todo.teamname" class="btn btn-danger btn-xs">delete</a></td>
+										<td> <button onclick = "toggleForm(this)">update</button> </td>
+										<td>
+										   <form style="display:none" action="/update_team" method="post">
+											   <input type="hidden" name="team_name" value="$todo.teamname">
+											   <label for="city">city:</label>
+											   <input type="text" id="city" name="city" value="$todo.city">
+											   <label for="comp_area">comp_area:</label>
+											   <input type="text"  id="comp_area" name="comp_area" value="$todo.comp_area">
+											   <label for="WINrate">WINrate:</label>
+											   <input type="text" id="WINrate" name="WINrate" value="$todo.WINrate">
+											   <label for="score">score:</label>
+											   <input type="text" id="score" name="score" value="$todo.score">
+											   <label for="oPPG">oPPG:</label>
+											   <input type="text" id="oPPG" name="oPPG" value="$todo.oPPG">
+											   <label for="pDIFF">pDIFF:</label>
+											   <input type="text" id="pDIFF" name="pDIFF" value="$todo.pDIFF">
+											   <label for="PACE">PACE:</label>
+											   <input type="text" id="PACE" name="PACE" value="$todo.PACE">
+											   <label for="oEFF">oEFF:</label>
+											   <input type="text" id="oEFF" name="oEFF" value="$todo.oEFF">
+											   <label for="dEFF">dEFF:</label>
+											   <input type="text" id="dEFF" name="dEFF" value="$todo.dEFF">
+											   <label for="eDIFF">eDIFF:</label>
+											   <input type="text" id="eDIFF" name="eDIFF" value="$todo.eDIFF">
+											   <label for="SOS">SOS:</label>
+											   <input type="text" id="SOS" name="SOS" value="$todo.SOS">
+											   <label for="rSOS">rSOS:</label>
+											   <input type="text" id="rSOS" name="rSOS" value="$todo.rSOS">
+											   <button type="submit">submit</button>
+										   </form>
+										</td>
+									</tr>
+
+	</table>
+
+	<table id="result_table1" style="display:none">
+
+		<thead>
+			<tr>
+				<th>team_name</th>
+				<th>city</th>
+				<th>area</th>
+				<th>win rate</th>
+				<th>score</th>
+				<th>oPPG</th>
+				<th>pDIFF</th>
+				<th>PACE</th>
+				<th>oEFF</th>
+				<th>dEFF</th>
+				<th>eDIFF</th>
+				<th>SOS</th>
+				<th>rSOS</th>
+			</tr>
+		</thead>
+		<tbody>
+			$for result in todos1:
+			<tr>
+				<td>$result.teamname</td>
+				<td>$result.city</td>
+				<td>$result.comp_area</td>
+				<td>$result.WINrate</td>
+				<td>$result.score</td>
+				<td>$result.oPPG</td>
+				<td>$result.pDIFF</td>
+				<td>$result.PACE</td>
+				<td>$result.oEFF</td>
+				<td>$result.dEFF</td>
+				<td>$result.eDIFF</td>
+				<td>$result.SOS</td>
+				<td>$result.rSOS</td>
+			</tr>
+		</tbody>
+	</table>
+
+</body>
+</html>

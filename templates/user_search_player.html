@@ -1,0 +1,220 @@
+$def with (todos1)
+<html>
+<head>
+	<title>user_search_player</title>
+	<style>
+		body {
+			background-color: #f2f2f2;
+			font-family: Arial, sans-serif;
+			color: #333;
+			margin: 0;
+			padding: 0;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 30px;
+		}
+
+		form {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			margin-bottom: 20px;
+			background-color: #f2f2f2;
+			padding: 20px;
+			box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+		}
+		#form_down_list {
+			background-color: #333; /*设置表单底色为深色*/
+			color: #fff; /*设置字体颜色为白色*/
+			padding: 20px; /*设置表单的内边距*/
+		}
+
+		#div1 {
+
+			padding: 10px; /*设置内边距*/
+			color: #fff; /*设置字体颜色为白色*/
+			margin-bottom: 10px; /*设置底部外边距*/
+		}
+
+		#div1 label {
+			display: inline-block; /*设置标签为行内块元素*/
+			width: 100px; /*设置标签宽度*/
+			margin-right: 10px; /*设置标签与输入框的距离*/
+		}
+
+		#div1 input {
+			padding: 5px; /*设置输入框的内边距*/
+			border-radius: 3px; /*设置输入框的圆角*/
+			border: none; /*去除输入框的边框*/
+			background-color: #fff; /*设置输入框的底色为白色*/
+			color: #333; /*设置输入框文字颜色为黑色*/
+		}
+
+		#mybutton {
+			background-color: #4CAF50; /*设置提交按钮背景色*/
+			color: #fff; /*设置提交按钮文字颜色*/
+			border: none; /*去除提交按钮边框*/
+			padding: 10px 20px; /*设置提交按钮内边距*/
+			border-radius: 3px; /*设置提交按钮圆角*/
+		}
+
+
+		label {
+			display: block;
+			margin-bottom: 10px;
+			font-weight: bold;
+		}
+
+		select {
+			flex: 1;
+			height: 40px;
+			margin-right: 20px;
+			padding: 5px;
+			border-radius: 4px;
+			border: none;
+			background-color: #fff;
+			box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+		}
+
+		input[type="text"] {
+			flex: 1;
+			height: 40px;
+			padding: 5px;
+			border-radius: 4px;
+			border: none;
+			background-color: #fff;
+			box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+		}
+
+		button {
+			height: 40px;
+			padding: 5px 20px;
+			background-color: #4CAF50;
+			color: #fff;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+		}
+
+		button:hover {
+			background-color: #3e8e41;
+		}
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			margin-bottom: 20px;
+			box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+			background-color: #fff;
+		}
+
+		th, td {
+			padding: 10px;
+			text-align: left;
+			border-bottom: 1px solid #ddd;
+		}
+
+		th {
+			background-color: #f2f2f2;
+			font-weight: bold;
+			font-size: 20px;
+		}
+
+
+		#div1 label, #div2 label {
+			flex: 1;
+			margin-right: 20px;
+		}
+	</style>
+
+	<script>
+		const submitBtn = document.getElementById("mybutton");
+		const resultTable1 = document.getElementById("result_table1");
+		const table1 = document.getElementById("table1");
+
+		submitBtn.addEventListener("click", function() {
+			resultTable1.style.display = "block";
+			table1.style.display = "none";
+		  }
+		);
+	</script>
+</head>
+<body>
+	<form id="form_down_list"  method="POST" action="/user_search_player">
+		<div>
+			<h1>Please input the special attribute value to search player</h1>
+		</div>
+		<br>
+		<div id="div1" >
+
+			<label for="input1.1">player_name:</label>
+			<input  name="player_name" type="text" id="input1.1" style=" margin-right: 30px;">
+			<label for="input1.2">player_team:</label>
+			<input  name="player_team" type="text" id="input1.2">
+		</div>
+
+		<button id="mybutton" type="submit" class="btn btn-primary" style=" margin-left: 30px; margin-bottom: 10px;"> submit</button>
+	</form>
+
+	<table id="table1">
+		<tr class=" label-primary">
+                                   <th scope="col"><span style="color:black">full_name</span></th>
+									<th scope="col"><span style="color:black">team_name</span></th>
+									<th scope="col"><span style="color:black">pos</span></th>
+									<th scope="col"><span style="color:black">age</span></th>
+									<th scope="col"><span style="color:black">gameplayed</span></th>
+									<th scope="col"><span style="color:black">mpg</span></th>
+									<th scope="col"><span style="color:black">USG</span></th>
+									<th scope="col"><span style="color:black">FTA</span></th>
+									<th scope="col"><span style="color:black">FT</span></th>
+								</tr>
+
+								$for todo in todos1:
+								<tr class="active">
+									<td>$todo.full_name</td>
+									<td>$todo.team_name</td>
+									<td>$todo.pos</td>
+									<td>$todo.age</td>
+									<td>$todo.gameplayed</td>
+									<td>$todo.mpg</td>
+									<td>$todo.USG</td>
+									<td>$todo.FTA</td>
+									<td>$todo.FT</td>
+								</tr>
+	</table>
+
+	<table id="result_table1" style="display:none">
+		<thead>
+			<tr>
+				<th>full_name</th>
+				<th>team_name</th>
+				<th>pos</th>
+				<th>age</th>
+				<th>gameplayed</th>
+				<th>mpg</th>
+				<th>USG</th>
+				<th>FTA</th>
+				<th>FT</th>
+			</tr>
+		</thead>
+		<tbody>
+			$for result in todos1:
+			<tr>
+				<td>$result.full_name</td>
+				<td>$result.team_name</td>
+				<td>$result.pos</td>
+				<td>$result.age</td>
+				<td>$result.gameplayed</td>
+				<td>$result.mpg</td>
+				<td>$result.USG</td>
+				<td>$result.FTA</td>
+				<td>$result.FT</td>
+			</tr>
+		</tbody>
+	</table>
+
+</body>
+</html>

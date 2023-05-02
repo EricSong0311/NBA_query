@@ -1,0 +1,79 @@
+$def with ()
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>页面</title>
+		<!-- 引入bootstrap的css -->
+		<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+
+		<style type="text/css">
+			form{
+				width: 300px;/* 宽度 */
+				text-align: center;/* 内容水平居中 */
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 100px;
+			}
+			form button{
+				width:125px;
+				margin-bottom:20px ;
+
+			}
+			form h2{
+				margin-bottom: 20px;
+			}
+
+			body{
+				background:url('/static/pic/3.jpg');
+				background-repeat:no-repeat;
+				background-size:100% auto;
+				opacity: 1.0;
+			}
+
+
+			input[type=radio] {
+				-webkit-appearance: none; /* 去掉默认样式 */
+				-moz-appearance: none;
+				appearance: none;
+				border: 2px solid #ccc; /* 给单选框添加边框 */
+				border-radius: 50%; /* 把单选框变成圆形 */
+				width: 1.4em;
+				height: 1.4em;
+				margin-right: 0.5em;
+				vertical-align: bottom;
+				outline: none; /* 去掉聚焦时的外边框 */
+			}
+
+	/* 给被选中的单选框添加样式 */
+			input[type=radio]:checked {
+			  border-color: #ffffff; /* 给被选中的单选框添加颜色 */
+			  background-color: #ffffff; /* 给被选中的单选框添加背景色 */
+			  color: #fff; /* 修改文本颜色 */
+			}
+		</style>
+
+	</head>
+	<body>
+
+		<form action="" method="POST">
+			<h2>Login</h2>
+		  	<div class="form-group">
+		    	<input type="text" id="username" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username">
+		  	</div>
+		  	<div class="form-group">
+		    	<input type="password" id="password" name="password"  class="form-control" id="exampleInputPassword1" placeholder = "Password">
+		  	</div>
+
+		  	<button type="submit" class="btn btn-primary">Login</button>
+		  	<button class="btn btn-primary"><a href = "/register" style="color: white">Register</a></button>
+		 	<br>
+			<br>
+       		<h5>select your login identity:</h5>
+		   	<input type="radio" name="user" >user
+			<input type="radio" name="admin" >admin
+		</form>
+		<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+   		<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	</body>
+</html>

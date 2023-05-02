@@ -1,0 +1,255 @@
+$def with (todos1)
+<html>
+<head>
+	<title>admin_head_coach</title>
+	<style>
+		body {
+			background-color: #f2f2f2;
+			font-family: Arial, sans-serif;
+			color: #333;
+			margin: 0;
+			padding: 0;
+		}
+
+		h1 {
+			text-align: center;
+			/*margin-bottom: 30px;*/
+		}
+
+		form {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			margin-bottom: 20px;
+			background-color: #f2f2f2;
+			/*padding: 20px;*/
+			box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+		}
+		#form_down_list {
+			background-color: #f2f2f2; /*设置表单底色为深色*/
+			color: #000; /*设置字体颜色为白色*/
+			padding: 20px; /*设置表单的内边距*/
+		}
+
+		#div1 {
+
+			padding: 10px; /*设置内边距*/
+			color: #000; /*设置字体颜色为白色*/
+			margin-bottom: 10px; /*设置底部外边距*/
+		}
+
+		#div1 label {
+			display: inline-block; /*设置标签为行内块元素*/
+			/*width: 100px; !*设置标签宽度*!*/
+			margin-right: 10px; /*设置标签与输入框的距离*/
+		}
+
+		#div1 input {
+			padding: 5px; /*设置输入框的内边距*/
+			border-radius: 3px; /*设置输入框的圆角*/
+			border: none; /*去除输入框的边框*/
+			background-color: #fff; /*设置输入框的底色为白色*/
+			color: #333; /*设置输入框文字颜色为黑色*/
+		}
+
+		#mybutton {
+			background-color: #4CAF50; /*设置提交按钮背景色*/
+			color: #fff; /*设置提交按钮文字颜色*/
+			border: none; /*去除提交按钮边框*/
+			padding: 10px 20px; /*设置提交按钮内边距*/
+			border-radius: 3px; /*设置提交按钮圆角*/
+		}
+
+		label {
+			display: block;
+			/*margin-bottom: 10px;*/
+			font-weight: bold;
+		}
+
+		select {
+			flex: 1;
+			height: 40px;
+			margin-right: 20px;
+			padding: 5px;
+			border-radius: 4px;
+			border: none;
+			background-color: #fff;
+			box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+		}
+
+		input[type="text"] {
+			flex: 1;
+			height: 40px;
+			padding: 5px;
+			border-radius: 4px;
+			border: none;
+			background-color: #fff;
+			box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+		}
+
+
+		button {
+			height: 40px;
+			padding: 5px 20px;
+			background-color: #4CAF50;
+			color: #fff;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+		}
+
+		button:hover {
+			background-color: #3e8e41;
+		}
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			margin-bottom: 20px;
+			box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+			background-color: #fff;
+		}
+
+		th, td {
+			padding: 10px;
+			text-align: left;
+			border-bottom: 1px solid #ddd;
+		}
+
+		th {
+			background-color: #f2f2f2;
+		}
+
+		#div1 {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			padding: 20px;
+		}
+
+		#div1 label, #div2 label {
+			flex: 1;
+		}
+	</style>
+
+	<script>
+		const submitBtn = document.getElementById("mybutton");
+		const resultTable1 = document.getElementById("result_table1");
+		const table1 = document.getElementById("table1");
+
+		submitBtn.addEventListener("click", function() {
+			resultTable1.style.display = "block";
+			table1.style.display = "none";
+		  }
+		);
+
+        function toggleForm(button) {
+              var mm = button.parentNode.nextElementSibling.firstElementChild;
+              console.log("mm",mm)
+
+              console.log("mm.style.display",mm.style.display)
+              if (mm.style.display === "none") {
+                // form.style.display = "table-row";
+                mm.style.display = "block";
+              } else {
+                mm.style.display = "none";
+              }
+            }
+		function showForm() {
+        document.getElementById("formContainer").style.display = "block";
+      }
+
+
+
+	</script>
+</head>
+<body>
+	<form id="form_down_list"  method="POST" action="/admin_head_coach">
+
+		<div >
+			<h1>Please input the special attribute value to search game</h1>
+		</div>
+		<div id="div1" >
+			<label for="input1.1">coach_name:</label>
+			<input  name="coach_name" type="text" id="input1.1" style="margin-right: 30px;">
+			<label for="input1.2">coach_team:</label>
+			<input  name="coach_team" type="text" id="input1.2" style="margin-right: 30px;">
+		</div>
+
+		<button id="mybutton" type="submit" class="btn btn-primary" style="margin-bottom: 20px;"> submit</button>
+	</form>
+
+	<button id="insert_coach" onclick="showForm()" class="btn btn-primary" style="margin-bottom: 20px;">insert</button>
+
+	<div id="formContainer" style="display:none;">
+		  <form action="/insert_coach" method="post">
+			<label for="insert_coach_name">coach_name:</label>
+			<input type="text" id="insert_coach_name" name="insert_coach_name" style="margin-right: 30px;"><br><br>
+			<label for="insert_coaching_times">coaching_times:</label>
+			<input type="text" id="insert_coaching_times" name="insert_coaching_times" style="margin-right: 30px;"><br><br>
+			<label for="insert_win_rate">win_rate:</label>
+			<input type="text" id="insert_win_rate" name="insert_win_rate" style="margin-right: 30px;"><br><br>
+			<label for="insert_coach_team">coach_team:</label>
+			<input type="text" id="insert_coach_team" name="insert_coach_team" style="margin-right: 30px;"><br><br>
+			<button id="insert" class="btn btn-primary">insert_submit</button>
+		  </form>
+	</div>
+
+	<table id="table1">
+		<tr class=" label-primary">
+                                   <th scope="col"><span style="color:black">id</span></th>
+                                   <th scope="col"><span style="color:black">name</span></th>
+                                   <th scope="col"><span style="color:black">time</span></th>
+                                   <th scope="col"><span style="color:black">operation</span></th>
+                                   <th scope="col"><span style="color:black">update</span></th>
+                                   <th scope="col"><span style="color:black">update_details</span></th>
+
+                               </tr>
+
+                               $for todo in todos1:
+                               <tr class="active">
+                                   <td> $todo.coach_name </td>
+                                   <td> $todo.coaching_times </td>
+                                   <td> $todo.win_rate </td>
+								   <td> $todo.coach_team </td>
+								   <td> <a href="/delete_head_coach?id=$todo.coach_name" class="btn btn-danger btn-xs">delete</a></td>
+                                   <td> <button onclick = "toggleForm(this)">update</button> </td>
+                                   <td>
+                                       <form style="display:none" action="/update_coach" method="post">
+										   <h5>Please update the following information:</h5>
+                                           <input type="hidden" name="coach_name" value="$todo.coach_name">
+										   <label  id="label1" for="coaching_times">coaching_times:</label>
+                                           <input type="text" id="coaching_times" name="coaching_times" value="$todo.coaching_times">
+                                           <label id="label2" for="win_rate">win_rate:</label>
+										   <input type="text" id="win_rate" name="win_rate" value="$todo.win_rate">
+										   <label id="label3" for="coach_team">coach_team:</label>
+										   <input type="text" id="coach_team" name="coach_team" value="$todo.coach_team">
+                                           <button type="submit">confirm</button>
+                                       </form>
+                                   </td>
+                               </tr>
+	</table>
+
+	<table id="result_table1" style="display:none">
+		<thead>
+			<tr>
+				<th>coach_name</th>
+				<th>coaching_times</th>
+				<th>win_rate</th>
+				<th>coach_team</th>
+			</tr>
+		</thead>
+		<tbody>
+			$for result in todos1:
+			<tr>
+				<td>$result.coach_name</td>
+				<td>$result.coaching_times</td>
+				<td>$result.win_rate</td>
+				<td>$result.coach_team</td>
+			</tr>
+		</tbody>
+	</table>
+
+</body>
+</html>

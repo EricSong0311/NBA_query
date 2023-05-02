@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>user_transition_page</title>
+    <style>
+
+      body {
+        background-image: url('/static/pic/1.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+
+      .btn-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .btn {
+        display: block;
+        width: 300px;
+        height: 120px;
+        margin-bottom: 40px;
+        text-align: center;
+        font-size: 40px;
+        color: #fff;
+        background-color: #4CAF50;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 5px #3E8E41;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .btn:hover {
+        background-color: #3E8E41;
+        box-shadow: 0 5px #2E773B;
+        transform: translateY(-2px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="btn-container">
+      <button class="btn" onclick="window.location.href='/user_search_game'">search game</button>
+      <button class="btn" onclick="window.location.href='/user_search_team'">search team</button>
+      <button class="btn" onclick="window.location.href='/user_search_player'">search player</button>
+      <button class="btn" onclick="window.location.href='/user_search_head_coach'">search coach</button>
+    </div>
+  </body>
+</html>

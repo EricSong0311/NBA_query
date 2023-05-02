@@ -1,0 +1,70 @@
+$def with ()
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Register</title>
+
+		<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+
+		<style type="text/css">
+			form{
+				width: 300px;/* 宽度 */
+				text-align: center;/* 内容水平居中 */
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 100px;
+			}
+			form button{
+				width:125px;
+				margin-bottom:20px ;
+
+			}
+			form h2{
+				margin-bottom: 20px;
+			}
+
+			body{
+				background:url('/static/pic/3.jpg');
+				background-repeat:no-repeat;
+				background-size:100% auto;
+				opacity: 1.0;
+			}
+		</style>
+
+	</head>
+	<body>
+		<script>
+			function checkPasswordMatch() {
+				var password1 = document.getElementById("password").value;
+				var password2 = document.getElementById("password_again").value;
+				var message = document.getElementById("message");
+
+				if (password1 === password2) {
+					message.innerHTML = "";
+				} else {
+					message.innerHTML = "password doesn't match";
+				}
+			}
+		</script>
+
+		<form id="register" action="" method="POST">
+			<h2>Register</h2>
+		  	<div class="form-group">
+		    	<input type="text" id="username" name="username" class="form-control"  aria-describedby="emailHelp" placeholder="Username">
+		  	</div>
+		  	<div class="form-group">
+		    	<input type="password" id="password" name="password"  class="form-control"  placeholder = "Password">
+		  	</div>
+
+		  	<div class="form-group">
+		    	<input type="password" id="password_again" name="password_again"  class="form-control"  placeholder = "Password_again" oninput="checkPasswordMatch()">
+			  	<span id="message" style="color: red;"></span>
+		  	</div>
+		  	<button type="submit" class="btn btn-primary">Register</button>
+		</form>
+		<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+   		<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	</body>
+</html>
